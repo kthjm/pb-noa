@@ -1,5 +1,5 @@
 import Next from 'next'
-import Noa from './Server.js'
+import Noa from './noa.js'
 
 const { NODE_ENV, PORT } = process.env
 const app = Next({ dev: NODE_ENV === 'backend' })
