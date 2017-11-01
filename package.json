@@ -25,7 +25,7 @@
   },
   "scripts": {
     "format": "prettier --write **/*.js package.json",
-    "run": "cross-env NODE_ENV=backend node -r dotenv/config -r babel-register server",
+    "serve": "cross-env NODE_ENV=backend node -r dotenv/config -r babel-register server",
     "build:koa": "cross-env NODE_ENV=backend babel server -d .server",
     "build:next": "cross-env NODE_ENV=universal next build",
     "heroku-postbuild": "run-s build:koa build:next",
