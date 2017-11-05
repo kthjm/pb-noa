@@ -2,6 +2,14 @@
   "engines": {
     "node": ">= 8.0.0"
   },
+  "scripts": {
+    "format": "prettier --write **/*.js package.json",
+    "serve": "cross-env NODE_ENV=backend node -r dotenv/config -r babel-register server",
+    "build:koa": "cross-env NODE_ENV=backend babel server -d .server",
+    "build:next": "cross-env NODE_ENV=universal next build",
+    "heroku-postbuild": "run-s build:koa build:next",
+    "start": "node .server"
+  },
   "dependencies": {
     "koa": "^2.3.0",
     "koa-router": "^7.2.1",
@@ -22,14 +30,6 @@
     "flow-typed": "^2.2.1",
     "npm-run-all": "^4.1.1",
     "prettier": "^1.7.4"
-  },
-  "scripts": {
-    "format": "prettier --write **/*.js package.json",
-    "serve": "cross-env NODE_ENV=backend node -r dotenv/config -r babel-register server",
-    "build:koa": "cross-env NODE_ENV=backend babel server -d .server",
-    "build:next": "cross-env NODE_ENV=universal next build",
-    "heroku-postbuild": "run-s build:koa build:next",
-    "start": "node .server"
   },
   "prettier": {
     "tabWidth": 2,

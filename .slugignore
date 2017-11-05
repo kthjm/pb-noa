@@ -1,3 +1,4 @@
 .gitignore
+.prettierignore
 README.md
-circle.yml
+.circleci/

@@ -26,6 +26,8 @@ app.prepare().then(() => server.listen(PORT, (err) => {}))
 ## heroku
 - [Error: Cannot find module when deploying to heroku](https://github.com/zeit/next.js/issues/198#issuecomment-299738100)
 - [Heroku-specific build steps](https://devcenter.heroku.com/articles/nodejs-support#heroku-specific-build-steps)
+- [Build behavior](https://devcenter.heroku.com/articles/nodejs-support#build-behavior)
+> If a yarn.lock file is detected in the root of the project, yarn is used for installing dependencies and running scripts. Otherwise, npm is used.
 
 ## circleci
 - [Migrating from 1.0 to 2.0](https://circleci.com/docs/2.0/migrating-from-1-2/)
