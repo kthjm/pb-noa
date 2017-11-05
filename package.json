@@ -8,7 +8,7 @@
     "serve": "cross-env NODE_ENV=backend node -r dotenv/config -r babel-register server",
     "build:koa": "cross-env NODE_ENV=backend babel server -d .server",
     "build:next": "cross-env NODE_ENV=universal next build",
-    "build": "npm-run-all -s build:koa build:next",
+    "build": "build:koa && build:next",
     "heroku-postbuild": "yarn build",
     "start": "node .server"
   },
