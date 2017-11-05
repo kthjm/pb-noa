@@ -28,6 +28,12 @@ app.prepare().then(() => server.listen(PORT, (err) => {}))
 - [Heroku-specific build steps](https://devcenter.heroku.com/articles/nodejs-support#heroku-specific-build-steps)
 - [Build behavior](https://devcenter.heroku.com/articles/nodejs-support#build-behavior)
 > If a yarn.lock file is detected in the root of the project, yarn is used for installing dependencies and running scripts. Otherwise, npm is used.
+- [devdependencies](https://devcenter.heroku.com/articles/nodejs-support#devdependencies)(ハマった)
+> We set NPM_CONFIG_PRODUCTION to true by default to install production dependencies only. If you would like to install devDependencies, you can disable production mode.
+>
+> However, since you usually don’t want all development dependencies in your production builds, it’s preferable to move only the dependencies you actually need for production builds (bower, grunt, gulp, etc) into dependencies.
+
+`dependencies`に`babel-*`を入れる形になった。
 
 ## circleci
 - [Migrating from 1.0 to 2.0](https://circleci.com/docs/2.0/migrating-from-1-2/)
