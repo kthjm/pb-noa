@@ -8,7 +8,7 @@
     "build:koa": "cross-env NODE_ENV=backend babel server -d .server",
     "build:next": "cross-env NODE_ENV=universal next build",
     "build": "run-s build:koa build:next",
-    "heroku-postbuild": "yarn build",
+    "postinstall": "npm run build",
     "start": "node .server"
   },
   "dependencies": {
