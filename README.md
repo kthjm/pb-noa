@@ -33,6 +33,9 @@ app.prepare().then(() => server.listen(PORT, (err) => {}))
 >
 > However, since you usually don’t want all development dependencies in your production builds, it’s preferable to move only the dependencies you actually need for production builds (bower, grunt, gulp, etc) into dependencies.
 
+参考: ["sh: 1: ./node_modules/.bin/babel: not found" while deploying to heroku #6281](https://github.com/babel/babel/issues/6281#issuecomment-330944269)
+> Heroku does not install dev dependencies since the server counts as "production" by default
+
 `dependencies`に`babel-*`を入れる形になった。
 
 ## circleci
