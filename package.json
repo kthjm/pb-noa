@@ -5,11 +5,11 @@
   },
   "scripts": {
     "format": "prettier --write **/*.js package.json",
-    "start": "nodemon src/server --watch src/server",
-    "start-p": "cross-env NODE_ENV=production node src/server",
-    "build": "next build src",
+    "start": "nodemon server --watch server",
+    "start-p": "cross-env NODE_ENV=production node server",
+    "build": "next build served",
     "heroku-postbuild": "yarn build",
-    "heroku-start": "node src/server"
+    "heroku-start": "node server"
   },
   "dependencies": {
     "koa": "^2.4.1",

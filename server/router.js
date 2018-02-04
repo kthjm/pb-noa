@@ -3,11 +3,11 @@ const UserAgent = require('koa-useragent')
 
 const router = new Router()
 
-router.use(async (ctx, next) => {
+const commonMiddleware = async (ctx, next) => {
   ctx.res.statusCode = 200
   await next()
   ctx.respond = false
-})
+}
 
 router.get(
   [
@@ -15,6 +15,7 @@ router.get(
     '/_next*',
     '/static*'
   ],
+  commonMiddleware,
   (ctx) => ctx.responseStatic()
 )
 
@@ -24,14 +25,16 @@ router.get(
     '/:account',
     '/:account/tagged/:tag'
   ],
+  commonMiddleware,
   UserAgent,
-  (ctx) => ctx.responsePages(
-    ctx.userAgent.isMobile ? '/Mobile' : '/Desktop',
-    () => ({
-      params: ctx.params,
-      data: {}
+  (ctx) =>
+    ctx.responsePage({
+      page: ctx.userAgent.isMobile ? '/Mobile' : '/Desktop',
+      query: () => ({
+        params: ctx.params,
+        data: {}
+      })
     })
-  )
 )
 
 module.exports = router

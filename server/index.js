@@ -4,9 +4,8 @@ const router = require('./router.js')
 
 const { PORT, NODE_ENV } = process.env
 
-const next = Next({ dev: NODE_ENV !== 'production', dir: './src' })
-
 const server = new Koa()
+const next = Next({ dev: NODE_ENV !== 'production', dir: './served' })
 
 server.context.responseStatic = function() {
   return next.handleRequest(
@@ -15,11 +14,11 @@ server.context.responseStatic = function() {
   )
 }
 
-server.context.responsePages = function(pagepath, query) {
+server.context.responsePage = function({ page, query }) {
   return next.render(
     this.req,
     this.res,
-    pagepath,
+    page,
     query
   )
 }
@@ -27,4 +26,6 @@ server.context.responsePages = function(pagepath, query) {
 server.use(router.routes())
 server.use(router.allowedMethods())
 
-next.prepare().then(() => server.listen(PORT || 7000))
+next.prepare().then(() =>
+  server.listen(PORT || 7000)
+)
