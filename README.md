@@ -1,6 +1,6 @@
 # personal boilerplate for next/koa
 
-```js
+<!-- ```js
 const app = Next({ dev })
 const server = Noa({
   handleStatic: app.getRequestHandler(),
@@ -8,7 +8,11 @@ const server = Noa({
 })
 
 app.prepare().then(() => server.listen(PORT, (err) => {}))
-```
+``` -->
+
+[Custom Koa Server example](https://github.com/zeit/next.js/tree/canary/examples/custom-server-koa)
+
+[`ctx.respond`](https://github.com/koajs/koa/blob/master/docs/api/context.md#ctxrespond)
 
 ## next.js
 
@@ -32,6 +36,8 @@ app.prepare().then(() => server.listen(PORT, (err) => {}))
 > We set NPM_CONFIG_PRODUCTION to true by default to install production dependencies only. If you would like to install devDependencies, you can disable production mode.
 >
 > However, since you usually don’t want all development dependencies in your production builds, it’s preferable to move only the dependencies you actually need for production builds (bower, grunt, gulp, etc) into dependencies.
+
+- [app.json Schema](https://devcenter.heroku.com/articles/app-json-schema)
 
 参考: ["sh: 1: ./node_modules/.bin/babel: not found" while deploying to heroku #6281](https://github.com/babel/babel/issues/6281#issuecomment-330944269)
 > Heroku does not install dev dependencies since the server counts as "production" by default
