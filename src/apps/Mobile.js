@@ -1,16 +1,6 @@
 import React from 'react'
 
-export default props => (
-  <div>
-    <style>{``}</style>
-    <SPA {...props.url.query} />
-  </div>
-)
-
-class SPA extends React.Component {
-  // static async getInitialProps({ query: { authorize } }) {
-  //   return { authorize: authorize }
-  // }
+export default class SPA extends React.Component {
 
   constructor(props) {
     super(props)
