@@ -6,6 +6,7 @@ const router = new Router()
 router.use(async (ctx, next) => {
   ctx.res.statusCode = 200
   await next()
+  ctx.respond = false
 })
 
 router.get(
@@ -14,10 +15,7 @@ router.get(
     '/_next*',
     '/static*'
   ],
-  async (ctx) => {
-    await ctx.responseStatic()
-    ctx.respond = false
-  }
+  (ctx) => ctx.responseStatic()
 )
 
 router.get(
@@ -27,18 +25,13 @@ router.get(
     '/:account/tagged/:tag'
   ],
   UserAgent,
-  async (ctx) => {
-
-    await ctx.responsePages(
-      ctx.userAgent.isMobile ? '/Mobile' : '/Desktop',
-      () => ({
-        params: ctx.params,
-        data: {}
-      })
-    )
-
-    ctx.respond = false
-  }
+  (ctx) => ctx.responsePages(
+    ctx.userAgent.isMobile ? '/Mobile' : '/Desktop',
+    () => ({
+      params: ctx.params,
+      data: {}
+    })
+  )
 )
 
 module.exports = router
